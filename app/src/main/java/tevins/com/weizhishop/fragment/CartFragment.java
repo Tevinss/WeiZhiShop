@@ -13,11 +13,11 @@ import tevins.com.weizhishop.R;
  * Created by yewyw on 2017/11/29/0029.
  */
 
-public class HomeFrament extends Fragment {
+public class CartFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
         return view;
     }
 }
