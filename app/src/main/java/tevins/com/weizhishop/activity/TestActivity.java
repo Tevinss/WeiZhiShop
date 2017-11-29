@@ -2,8 +2,7 @@ package tevins.com.weizhishop.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import tevins.com.weizhishop.R;
@@ -14,24 +13,27 @@ import tevins.com.weizhishop.R;
 
 public class TestActivity extends BaseActivity {
 
+
     /**
-     * 请输入搜索内容
+     * 热门活动
      */
-    private EditText mEtToolbarSerachview;
-    private TextView mTvToolbarTitle;
-    private ImageButton mIbToolbarRightButton;
+    private TextView mTvHomeItemTitle;
+    private ImageView mIvHomeItemBig;
+    private ImageView mIvHomeItemSmallTop;
+    private ImageView mIvHomeItemSmallBottom;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_toolbar);
+        setContentView(R.layout.item_home_cardviewfir);
         initView();
 
     }
 
     private void initView() {
-        mEtToolbarSerachview = (EditText) findViewById(R.id.et_toolbar_serachview);
-        mTvToolbarTitle = (TextView) findViewById(R.id.tv_toolbar_title);
-        mIbToolbarRightButton = (ImageButton) findViewById(R.id.ib_toolbar_right_button);
+        mTvHomeItemTitle = (TextView) findViewById(R.id.tv_home_item_title);
+        mIvHomeItemBig = (ImageView) findViewById(R.id.iv_home_item_big);
+        mIvHomeItemSmallTop = (ImageView) findViewById(R.id.iv_home_item_small_top);
+        mIvHomeItemSmallBottom = (ImageView) findViewById(R.id.iv_home_item_small_bottom);
     }
 }

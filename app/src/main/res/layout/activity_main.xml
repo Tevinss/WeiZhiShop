@@ -15,7 +15,6 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         app:isShowSearchView="true"
-        app:rightButtonIcon="@drawable/selector_icon_hot"
         ></tevins.com.weizhishop.widget.MyToolBar>
 
     <FrameLayout
