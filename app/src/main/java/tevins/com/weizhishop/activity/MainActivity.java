@@ -5,9 +5,11 @@ import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,12 +20,17 @@ import tevins.com.weizhishop.fragment.CategoryFragment;
 import tevins.com.weizhishop.fragment.HomeFrament;
 import tevins.com.weizhishop.fragment.HotFragment;
 import tevins.com.weizhishop.fragment.MineFragment;
+import tevins.com.weizhishop.widget.MyToolBar;
 
 public class MainActivity extends BaseActivity {
 
     private FragmentTabHost mFragmentTabHost;
     private ArrayList<Tab> mTabs = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
+    private MyToolBar mMyToolbar;
+    private FrameLayout mRealtabcontent;
+    private FrameLayout mTabcontent;
+    private FragmentTabHost mTabhost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,17 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
+        initTabHost();
+        mMyToolbar = (MyToolBar) findViewById(R.id.my_toolbar);
+        mMyToolbar.setRightButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, mMyToolbar.getSeachContent(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void initTabHost() {
         mLayoutInflater = LayoutInflater.from(this);
         mFragmentTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mFragmentTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
@@ -51,6 +69,9 @@ public class MainActivity extends BaseActivity {
         mTabs.add(mineTab);
 
         buildTabSpec(mTabs);
+        mRealtabcontent = (FrameLayout) findViewById(R.id.realtabcontent);
+        mTabcontent = (FrameLayout) findViewById(android.R.id.tabcontent);
+        mTabhost = (FragmentTabHost) findViewById(android.R.id.tabhost);
     }
 
     /**
@@ -76,4 +97,5 @@ public class MainActivity extends BaseActivity {
         //设置当前是哪一个tab
         mFragmentTabHost.setCurrentTab(0);
     }
+
 }

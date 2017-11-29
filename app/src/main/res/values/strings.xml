@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">WeiZhiShop</string>
     <string name="home">主页</string>
     <string name="hot">热卖</string>
     <string name="catagory">分类</string>

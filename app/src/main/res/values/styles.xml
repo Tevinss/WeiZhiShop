@@ -2,15 +2,34 @@
 
     <!-- Base application theme. -->
     <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
-        <!--状态栏颜色-->
+        <!--Appbar背景色-->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <!--toolbar背景色-->
+        <!--状态栏颜色-->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <!--各控制元件(如：check box、switch 或是 radoi) 被勾选 (checked) 或是选定 (selected) 的颜色。-->
         <item name="colorAccent">@color/colorAccent</item>
+        <!--各个控制控件的默认颜色-->
+        <item name="android:colorControlNormal">@color/white</item>
+
+        <!--App bar 上的标题与更多菜单中的文字颜色。-->
+        <item name="android:textColorPrimary">@color/white</item>
+        <!--页面背景色-->
+        <item name="android:windowBackground">@color/white</item>
+
+        <!--去掉actionbar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <!--底部导航栏颜色-->
+        <item name="android:navigationBarColor">@color/ebRed</item>
     </style>
 
+    <!--search_view的style-->
     <style name="search_view">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
@@ -18,6 +37,27 @@
         <item name="android:paddingBottom">6dp</item>
         <item name="android:paddingLeft">4dp</item>
         <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="AndroidImageSlider_Corner_Oval_Orange">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <!--<item name="android:background">@drawable/indicator_corner_bg</item>-->
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="shape">oval</item>
+        <item name="padding_left">3dp</item>
+        <item name="padding_right">3dp</item>
+        <item name="padding_top">4dp</item>
+        <item name="padding_bottom">4dp</item>
+
+        <item name="selected_color">#f60</item>
+        <item name="unselected_color">#ffffff</item>
+        <item name="selected_width">6dp</item>
+        <item name="selected_height">6dp</item>
+        <item name="unselected_width">6dp</item>
+        <item name="unselected_height">6dp</item>
     </style>
 
 </resources>

@@ -17,6 +17,56 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {//分渠道打包
+        productRelease {//生产环境
+            applicationId "com.yewyw.weizhishop"
+            versionName "V4.8.2"
+            buildConfigField "boolean", "LOG_CALLS", "false"   // 定义了boolean变量 false
+            buildConfigField "String", "BASEURL", '"http://api.yewyw.com"'
+            buildConfigField "String", "RECORDURL", '"http://api.yewyw.com/integral"'
+            manifestPlaceholders = [EASEMOB_APPKEY_VALUE: "szzsit#ylzx",
+                                    UMENG_APPKEY_VALUE  : "5796f8fa67e58ea42c000fe3",
+                                    APP_ICON            : "@mipmap/app_logo",
+                                    LABEL_NAME          : "唯知商城",]
+            //环信和友盟生产环境的key  @mipmap/app_logo
+        }
+        productReleaseRc {//生产环境测试包
+            applicationId "com.yewyw.weizhishoprc"
+            versionName "V4.8.217112916.rc"
+            buildConfigField "boolean", "LOG_CALLS", "true"
+            buildConfigField "String", "BASEURL", '"http://api.yewyw.com"'
+            buildConfigField "String", "RECORDURL", '"http://api.yewyw.com/integral"'
+            manifestPlaceholders = [EASEMOB_APPKEY_VALUE: "szzsit#ylzx",
+                                    UMENG_APPKEY_VALUE  : "5796f8fa67e58ea42c000fe3",
+                                    APP_ICON            : "@mipmap/app_logo",
+                                    LABEL_NAME          : "线上测试版",]
+            //环信和友盟生产环境的key  @mipmap/app_logo
+        }
+        productDev {//开发环境
+            applicationId "com.yewyw.weizhishopdev"
+            versionName "V4.8.217112916.alpha"
+            buildConfigField "boolean", "LOG_CALLS", "true"
+            buildConfigField "String", "BASEURL", '"http://dev.yewyw.com"'
+            buildConfigField "String", "RECORDURL", '"http://api.yewyw.com/integral"'
+            manifestPlaceholders = [EASEMOB_APPKEY_VALUE: "szzsit#yltest",
+                                    UMENG_APPKEY_VALUE  : "595ee0ed7f2c7472650003d4",
+                                    APP_ICON            : "@mipmap/app_logo",
+                                    LABEL_NAME          : "开发版",]
+            //环信和友盟生测试环境的key
+        }
+        productTest {//测试环境
+            applicationId "com.yewyw.weizhishoptest"
+            versionName "V4.8.217112916.beta"
+            buildConfigField "boolean", "LOG_CALLS", "true"
+            buildConfigField "String", "BASEURL", '"http://test.yewyw.com"'
+            buildConfigField "String", "RECORDURL", '"http://api.yewyw.com/integral"'
+            manifestPlaceholders = [EASEMOB_APPKEY_VALUE: "szzsit#yltest",
+                                    UMENG_APPKEY_VALUE  : "595ee0ed7f2c7472650003d4",
+                                    APP_ICON            : "@mipmap/app_logo",
+                                    LABEL_NAME          : "测试版",]
+            //环信和友盟生测试环境的key
+        }
+    }
 }
 
 dependencies {
@@ -27,4 +77,19 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    compile "com.android.support:support-v4:+"
+    compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.slider:library:1.1.5@aar'
+}
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.0'
+            }
+        }
+    }
 }
