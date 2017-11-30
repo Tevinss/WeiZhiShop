@@ -1,5 +1,6 @@
-package tevins.com.weizhishop.adapter;
+package tevins.com.weizhishop.ui.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,10 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import tevins.com.weizhishop.R;
-import tevins.com.weizhishop.bean.HomeCategory;
+import tevins.com.weizhishop.model.bean.HomeCategoryInfo;
 
 /**
  * Created by yewyw on 2017/11/29/0029.
@@ -20,10 +24,12 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
     private static final int HOME_ITME_TYPE_LEFT = 0;
     private static final int HOME_ITME_TYPE_RIGHT = 1;
 
-    private ArrayList<HomeCategory> mHomeCategories;
+    private List<HomeCategoryInfo> mHomeCategories = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
+    private Context mContext;
 
-    public HomeCategoryAdapter() {
+    public HomeCategoryAdapter(Context context) {
+        mContext = context;
     }
 
     @Override
@@ -38,12 +44,12 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        HomeCategory homeCategory = mHomeCategories.get(position);
+        HomeCategoryInfo homeCategory = mHomeCategories.get(position);
         if (homeCategory != null) {
-            holder.mTvHomeItemTitle.setText(homeCategory.getName());
-            holder.mIvHomeItemBig.setImageResource(homeCategory.getImgBig());
-            holder.mIvHomeItemSmallTop.setImageResource(homeCategory.getImgSmallTop());
-            holder.mIvHomeItemSmallBottom.setImageResource(homeCategory.getImgSmallBottom());
+            holder.mTvHomeItemTitle.setText(homeCategory.getTitle());//设置标题
+            Picasso.with(mContext).load(homeCategory.getCpOne().getImgUrl()).into(holder.mIvHomeItemBig);
+            Picasso.with(mContext).load(homeCategory.getCpTwo().getImgUrl()).into(holder.mIvHomeItemSmallTop);
+            Picasso.with(mContext).load(homeCategory.getCpThree().getImgUrl()).into(holder.mIvHomeItemSmallBottom);
         }
     }
 
@@ -75,7 +81,7 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
         }
     }
 
-    public void setData(ArrayList<HomeCategory> homeCategories) {
+    public void setData(List<HomeCategoryInfo> homeCategories) {
         mHomeCategories = homeCategories;
         this.notifyDataSetChanged();
     }

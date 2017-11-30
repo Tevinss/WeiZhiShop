@@ -1,4 +1,4 @@
-package tevins.com.weizhishop.bean;
+package tevins.com.weizhishop.model.bean;
 
 import java.io.Serializable;
 

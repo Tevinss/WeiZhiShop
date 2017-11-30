@@ -1,8 +1,7 @@
-package tevins.com.weizhishop.activity;
+package tevins.com.weizhishop.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -14,13 +13,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import tevins.com.weizhishop.R;
-import tevins.com.weizhishop.bean.Tab;
-import tevins.com.weizhishop.fragment.CartFragment;
-import tevins.com.weizhishop.fragment.CategoryFragment;
-import tevins.com.weizhishop.fragment.HomeFrament;
-import tevins.com.weizhishop.fragment.HotFragment;
-import tevins.com.weizhishop.fragment.MineFragment;
-import tevins.com.weizhishop.widget.MyToolBar;
+import tevins.com.weizhishop.model.bean.Tab;
+import tevins.com.weizhishop.ui.fragment.CartFragment;
+import tevins.com.weizhishop.ui.fragment.CategoryFragment;
+import tevins.com.weizhishop.ui.fragment.HomeFrament;
+import tevins.com.weizhishop.ui.fragment.HotFragment;
+import tevins.com.weizhishop.ui.fragment.MineFragment;
+import tevins.com.weizhishop.ui.widget.MyToolBar;
 
 public class MainActivity extends BaseActivity {
 
@@ -83,7 +82,6 @@ public class MainActivity extends BaseActivity {
         for (Tab tab : tabs) {
             //给tabspec打标记
             TabHost.TabSpec tabSpec = mFragmentTabHost.newTabSpec(getString(tab.getTitle()));
-            Log.e("MainActivity", "buildTabSpec: " + getString(tab.getTitle()));
             //给tabspec设置indicator
             View tabView = mLayoutInflater.inflate(R.layout.tab_indicator, null);
             ImageView iconTab = (ImageView) tabView.findViewById(R.id.icon_tab);

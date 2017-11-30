@@ -22,8 +22,7 @@ android {
             applicationId "com.yewyw.weizhishop"
             versionName "V4.8.2"
             buildConfigField "boolean", "LOG_CALLS", "false"   // 定义了boolean变量 false
-            buildConfigField "String", "BASEURL", '"http://api.yewyw.com"'
-            buildConfigField "String", "RECORDURL", '"http://api.yewyw.com/integral"'
+            buildConfigField "String", "BASEURL", '"http://112.124.22.238:8081/course_api/"'
             manifestPlaceholders = [EASEMOB_APPKEY_VALUE: "szzsit#ylzx",
                                     UMENG_APPKEY_VALUE  : "5796f8fa67e58ea42c000fe3",
                                     APP_ICON            : "@mipmap/app_logo",
@@ -34,8 +33,7 @@ android {
             applicationId "com.yewyw.weizhishoprc"
             versionName "V4.8.217112916.rc"
             buildConfigField "boolean", "LOG_CALLS", "true"
-            buildConfigField "String", "BASEURL", '"http://api.yewyw.com"'
-            buildConfigField "String", "RECORDURL", '"http://api.yewyw.com/integral"'
+            buildConfigField "String", "BASEURL", '"http://112.124.22.238:8081/course_api/"'
             manifestPlaceholders = [EASEMOB_APPKEY_VALUE: "szzsit#ylzx",
                                     UMENG_APPKEY_VALUE  : "5796f8fa67e58ea42c000fe3",
                                     APP_ICON            : "@mipmap/app_logo",
@@ -46,8 +44,7 @@ android {
             applicationId "com.yewyw.weizhishopdev"
             versionName "V4.8.217112916.alpha"
             buildConfigField "boolean", "LOG_CALLS", "true"
-            buildConfigField "String", "BASEURL", '"http://dev.yewyw.com"'
-            buildConfigField "String", "RECORDURL", '"http://api.yewyw.com/integral"'
+            buildConfigField "String", "BASEURL", '"http://112.124.22.238:8081/course_api/"'
             manifestPlaceholders = [EASEMOB_APPKEY_VALUE: "szzsit#yltest",
                                     UMENG_APPKEY_VALUE  : "595ee0ed7f2c7472650003d4",
                                     APP_ICON            : "@mipmap/app_logo",
@@ -58,8 +55,7 @@ android {
             applicationId "com.yewyw.weizhishoptest"
             versionName "V4.8.217112916.beta"
             buildConfigField "boolean", "LOG_CALLS", "true"
-            buildConfigField "String", "BASEURL", '"http://test.yewyw.com"'
-            buildConfigField "String", "RECORDURL", '"http://api.yewyw.com/integral"'
+            buildConfigField "String", "BASEURL", '"http://112.124.22.238:8081/course_api/"'
             manifestPlaceholders = [EASEMOB_APPKEY_VALUE: "szzsit#yltest",
                                     UMENG_APPKEY_VALUE  : "595ee0ed7f2c7472650003d4",
                                     APP_ICON            : "@mipmap/app_logo",
@@ -85,6 +81,9 @@ dependencies {
 
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support:cardview-v7:25.3.1'
+
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'com.google.code.gson:gson:2.6.2'
 }
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->

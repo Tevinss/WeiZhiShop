@@ -1,4 +1,4 @@
-package tevins.com.weizhishop.activity;
+package tevins.com.weizhishop.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 

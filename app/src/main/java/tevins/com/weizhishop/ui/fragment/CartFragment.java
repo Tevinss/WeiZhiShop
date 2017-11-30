@@ -1,4 +1,4 @@
-package tevins.com.weizhishop.fragment;
+package tevins.com.weizhishop.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,11 +13,11 @@ import tevins.com.weizhishop.R;
  * Created by yewyw on 2017/11/29/0029.
  */
 
-public class MineFragment extends Fragment {
+public class CartFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mine, container, false);
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
         return view;
     }
 }

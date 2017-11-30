@@ -7,13 +7,14 @@
     <!-- if you want to load images from a file OR from the internet -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
+        android:name="tevins.com.weizhishop.application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="${LABEL_NAME}"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -21,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.TestActivity"></activity>
+        <activity android:name=".ui.activity.TestActivity"></activity>
 
     </application>
 

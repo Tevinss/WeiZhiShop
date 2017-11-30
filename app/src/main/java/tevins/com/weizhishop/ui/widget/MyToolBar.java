@@ -1,4 +1,4 @@
-package tevins.com.weizhishop.widget;
+package tevins.com.weizhishop.ui.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

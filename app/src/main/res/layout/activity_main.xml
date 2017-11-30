@@ -8,14 +8,14 @@
 
     >
 
-    <tevins.com.weizhishop.widget.MyToolBar
+    <tevins.com.weizhishop.ui.widget.MyToolBar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         app:isShowSearchView="true"
-        ></tevins.com.weizhishop.widget.MyToolBar>
+        ></tevins.com.weizhishop.ui.widget.MyToolBar>
 
     <FrameLayout
         android:id="@+id/realtabcontent"

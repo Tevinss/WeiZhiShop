@@ -1,4 +1,4 @@
-package tevins.com.weizhishop.bean;
+package tevins.com.weizhishop.model.bean;
 
 /**
  * Created by yewyw on 2017/11/29/0029.
