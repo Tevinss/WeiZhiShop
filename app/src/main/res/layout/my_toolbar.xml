@@ -14,6 +14,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:drawableLeft="@mipmap/icon_search"
+        android:focusable="false"
         android:gravity="center"
         android:hint="请输入搜索内容"
         android:textColorHint="@color/white"

@@ -10,7 +10,6 @@ import tevins.com.weizhishop.model.BaseModel;
 import tevins.com.weizhishop.model.bean.HomeCategoryInfo;
 import tevins.com.weizhishop.presenter.callback.HomeCategoryCallback;
 import tevins.com.weizhishop.utils.Constant;
-import tevins.com.weizhishop.utils.LogUtils;
 import tevins.com.weizhishop.utils.http.OkHttpHelper;
 
 /**
@@ -31,8 +30,6 @@ public class HomeCategoryModel implements BaseModel {
                 if (homeCategoryInfoList != null) {
                     callback.onSuccess(response, homeCategoryInfoList);
                 }
-                LogUtils.e("HomeCategoryModel", "onSuccess: " + isMainThread());
-
             }
 
             @Override

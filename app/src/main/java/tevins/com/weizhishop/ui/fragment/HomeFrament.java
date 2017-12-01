@@ -25,6 +25,7 @@ import tevins.com.weizhishop.presenter.impl.HomeCategoryPresenter;
 import tevins.com.weizhishop.ui.adapter.HomeCategoryAdapter;
 import tevins.com.weizhishop.ui.view.BaseView;
 import tevins.com.weizhishop.ui.widget.HomeCatedoryItemDecoration;
+import tevins.com.weizhishop.utils.LogUtils;
 
 /**
  * Created by yewyw on 2017/11/29/0029.
@@ -70,6 +71,21 @@ public class HomeFrament extends Fragment implements BaseView {
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        LogUtils.e("HomeFrament", "onResume: " + "我是resume");
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+
+        if (!hidden) {
+            LogUtils.e("HomeFrament", "onHiddenChanged: " + "HomeFrament显示了");
+        }
+    }
+
     /**
      * 设置轮播图数据
      *
@@ -87,13 +103,24 @@ public class HomeFrament extends Fragment implements BaseView {
      * @param bannerInfoList
      */
     private void initSlider(List<BannerInfo> bannerInfoList) {
-        for (int i = 0; i < bannerInfoList.size(); i++) {
-            TextSliderView textSliderView = new TextSliderView(this.getContext());
+        TextSliderView textSliderView;
+        mSlider.removeAllSliders();
+        for (BannerInfo bannerinfo : bannerInfoList) {
+            textSliderView = new TextSliderView(this.getActivity());
             textSliderView
-                    .description(bannerInfoList.get(i).getName())
-                    .image(bannerInfoList.get(i).getImgUrl());
+                    .description(bannerinfo.getName())
+                    .image(bannerinfo.getImgUrl());
             mSlider.addSlider(textSliderView);
+            textSliderView = null;
         }
+
+//        for (int i = 0; i < size; i++) {
+//            textSliderView = new TextSliderView(this.getContext());
+//            textSliderView
+//                    .description(bannerInfoList.get(i).getName())
+//                    .image(bannerInfoList.get(i).getImgUrl());
+//            mSlider.addSlider(textSliderView);
+//        }
        /* DefaultSliderView defaultSliderView = new DefaultSliderView(this.getContext());
         defaultSliderView
                 .description("全面屏手机换屏价格大调查")

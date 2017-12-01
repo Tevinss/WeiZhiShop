@@ -1,7 +1,6 @@
 package tevins.com.weizhishop.ui.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -19,11 +18,12 @@ import tevins.com.weizhishop.ui.fragment.CategoryFragment;
 import tevins.com.weizhishop.ui.fragment.HomeFrament;
 import tevins.com.weizhishop.ui.fragment.HotFragment;
 import tevins.com.weizhishop.ui.fragment.MineFragment;
+import tevins.com.weizhishop.ui.widget.FragmentTabHost;
 import tevins.com.weizhishop.ui.widget.MyToolBar;
 
 public class MainActivity extends BaseActivity {
 
-    private FragmentTabHost mFragmentTabHost;
+    private tevins.com.weizhishop.ui.widget.FragmentTabHost mFragmentTabHost;
     private ArrayList<Tab> mTabs = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
     private MyToolBar mMyToolbar;
