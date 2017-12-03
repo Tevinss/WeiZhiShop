@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import tevins.com.weizhishop.utils.LogUtils;
 
 /**
@@ -20,6 +22,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fresco.initialize(this);
         mPackageName = getPackageName();
         catchException();
     }

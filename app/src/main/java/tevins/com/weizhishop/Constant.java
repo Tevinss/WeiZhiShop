@@ -1,6 +1,4 @@
-package tevins.com.weizhishop.utils;
-
-import tevins.com.weizhishop.BuildConfig;
+package tevins.com.weizhishop;
 
 /**
  * Created by tevins on 2017/11/30/0030.
@@ -19,6 +17,10 @@ public class Constant {
          * 首页banner接口
          */
         public static final String HOME_BANNER = BASEURL + "banner/query";
+        /**
+         * 热卖商品接口
+         */
+        public static final String WARES_HOT = BASEURL + "wares/hot";
 
 
     }

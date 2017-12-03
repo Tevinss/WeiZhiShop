@@ -8,7 +8,7 @@ import okhttp3.Response;
 import tevins.com.weizhishop.model.BaseModel;
 import tevins.com.weizhishop.model.bean.BannerInfo;
 import tevins.com.weizhishop.presenter.callback.HomeBannerCallback;
-import tevins.com.weizhishop.utils.Constant;
+import tevins.com.weizhishop.Constant;
 import tevins.com.weizhishop.utils.http.OkHttpHelper;
 
 /**

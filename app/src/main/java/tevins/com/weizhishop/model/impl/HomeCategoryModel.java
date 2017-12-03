@@ -9,7 +9,7 @@ import okhttp3.Response;
 import tevins.com.weizhishop.model.BaseModel;
 import tevins.com.weizhishop.model.bean.HomeCategoryInfo;
 import tevins.com.weizhishop.presenter.callback.HomeCategoryCallback;
-import tevins.com.weizhishop.utils.Constant;
+import tevins.com.weizhishop.Constant;
 import tevins.com.weizhishop.utils.http.OkHttpHelper;
 
 /**

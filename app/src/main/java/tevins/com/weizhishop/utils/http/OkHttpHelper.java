@@ -66,7 +66,7 @@ public class OkHttpHelper {
      * @param callback 回调
      * @param params   请求参数
      */
-    public void post(String url, ApiCallback callback, Map<String, String> params) {
+    public void post(String url, Map<String, String> params, ApiCallback callback) {
         Request request = buildPostRequest(url, params);
         doRequest(request, callback);
     }
@@ -89,7 +89,6 @@ public class OkHttpHelper {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {//请求成功
-
                     String resultStr = response.body().string();
                     LogUtils.e("OkHttpHelper", "onResponse: " + resultStr);
                     if (callback.mType == String.class) {
