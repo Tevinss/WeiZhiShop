@@ -35,6 +35,5 @@ public class ShoppingCartAdapter extends SimpleAdapter<ShoppingCartInfo> {
         //设置数量值
         NumberAddSubView numberAddSubView = (NumberAddSubView) holder.getView(R.id.num_shopping_cart_item_control);
         numberAddSubView.setValue(shoppingCartInfo.getCount());
-
     }
 }

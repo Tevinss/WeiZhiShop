@@ -58,7 +58,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
     /**
      * 获取购物车数据
      */
-    private void getShoppingCartsData() {
+    public void getShoppingCartsData() {
         CartProvider cartProvider = new CartProvider(this.getActivity().getApplicationContext());
         List<ShoppingCartInfo> shoppingCartInfoList = cartProvider.getAll();
         if (shoppingCartInfoList != null) {

@@ -1,6 +1,7 @@
 package tevins.com.weizhishop.ui.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -30,6 +31,7 @@ public class MainActivity extends BaseActivity {
     private FrameLayout mRealtabcontent;
     private FrameLayout mTabcontent;
     private FragmentTabHost mTabhost;
+    private CartFragment mCartFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,15 @@ public class MainActivity extends BaseActivity {
     }
 
     private void refreshData() {
+        if (mCartFragment == null) {
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(getString(R.string.cart));
+            if (fragment != null) {
+                mCartFragment = (CartFragment) fragment;
+                mCartFragment.getShoppingCartsData();
+            }
+        } else {
+            mCartFragment.getShoppingCartsData();
+        }
 
     }
 
