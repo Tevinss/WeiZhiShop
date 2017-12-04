@@ -17,7 +17,7 @@ import tevins.com.weizhishop.R;
 import tevins.com.weizhishop.model.bean.HomeCategoryInfo;
 
 /**
- * Created by yewyw on 2017/11/29/0029.
+ * Created by tevins on 2017/11/29/0029.
  */
 
 public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapter.ViewHolder> {

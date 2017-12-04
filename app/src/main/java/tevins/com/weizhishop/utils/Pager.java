@@ -9,6 +9,7 @@ import com.cjj.MaterialRefreshListener;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -34,6 +35,10 @@ public class Pager {
         initRefreshLayout();
     }
 
+    public static Builder newBuilder() {
+        builder = new Builder();
+        return builder;
+    }
 
     private void initRefreshLayout() {
         builder.mRefreshlayout.setLoadMore(builder.mCanLoadMore);
@@ -90,6 +95,13 @@ public class Pager {
         HashMap<String, String> params = new HashMap<>();
         params.put("curPage", builder.mPageIndex + "");
         params.put("pageSize", builder.mPageSize + "");
+        HashMap<String, String> hashMap = builder.mParams;
+        if (hashMap != null) {
+            for (Map.Entry<String, String> entry : hashMap.entrySet()) {
+//            System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+                params.put(entry.getKey(), entry.getValue());
+            }
+        }
         return params;
     }
 
@@ -100,11 +112,6 @@ public class Pager {
         state = STATE_REFREH;
         builder.mPageIndex = 1;
         requestData();
-    }
-
-    public static Builder newBuilder() {
-        builder = new Builder();
-        return builder;
     }
 
 
@@ -152,7 +159,7 @@ public class Pager {
      */
     private <T> void showData(List<T> list, int totalPage, int totalCount) {
         if (list == null || list.size() <= 0) {
-            ToastUtils.show(builder.mContext, "没有数据");
+            ToastUtils.show(builder.mContext, "暂时没有数据，敬请期待！");
             return;
         }
 
@@ -192,6 +199,7 @@ public class Pager {
         private OnPageListener mOnPageListener;
         private String mUrl;
         private boolean mCanLoadMore = false;
+        private HashMap<String, String> mParams;
 
         public Pager build(Context context, Type type) {
             mContext = context;
@@ -236,6 +244,11 @@ public class Pager {
 
         public Builder setOnPageListener(OnPageListener onPageListener) {
             mOnPageListener = onPageListener;
+            return builder;
+        }
+
+        public Builder setParams(HashMap<String, String> params) {
+            mParams = params;
             return builder;
         }
     }

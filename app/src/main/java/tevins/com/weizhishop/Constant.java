@@ -21,7 +21,13 @@ public class Constant {
          * 热卖商品接口
          */
         public static final String WARES_HOT = BASEURL + "wares/hot";
-
-
+        /**
+         * 商品分类信息
+         */
+        public static final String CATEGORY_LIST = BASEURL + "category/list";
+        /**
+         * 分类下的商品信息
+         */
+        public static final String WARES_LIST = BASEURL + "wares/list";
     }
 }

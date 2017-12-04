@@ -51,8 +51,8 @@
             />
 
         <Button
-            android:id="@+id/btn_add"
-            style="@style/bigRedButton"
+            android:id="@+id/btn_add_to_cart"
+            style="@style/smallRedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"

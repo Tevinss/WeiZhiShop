@@ -4,7 +4,6 @@ android {
     compileSdkVersion 25
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "tevins.com.weizhishop"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -19,7 +18,7 @@ android {
     }
     productFlavors {//分渠道打包
         productRelease {//生产环境
-            applicationId "com.yewyw.weizhishop"
+            applicationId "com.tevins.weizhishop"
             versionName "V4.8.2"
             buildConfigField "boolean", "LOG_CALLS", "false"   // 定义了boolean变量 false
             buildConfigField "String", "BASEURL", '"http://112.124.22.238:8081/course_api/"'
@@ -30,7 +29,7 @@ android {
             //环信和友盟生产环境的key  @mipmap/app_logo
         }
         productReleaseRc {//生产环境测试包
-            applicationId "com.yewyw.weizhishoprc"
+            applicationId "com.tevins.weizhishoprc"
             versionName "V4.8.217112916.rc"
             buildConfigField "boolean", "LOG_CALLS", "true"
             buildConfigField "String", "BASEURL", '"http://112.124.22.238:8081/course_api/"'
@@ -41,7 +40,7 @@ android {
             //环信和友盟生产环境的key  @mipmap/app_logo
         }
         productDev {//开发环境
-            applicationId "com.yewyw.weizhishopdev"
+            applicationId "com.tevins.weizhishopdev"
             versionName "V4.8.217112916.alpha"
             buildConfigField "boolean", "LOG_CALLS", "true"
             buildConfigField "String", "BASEURL", '"http://112.124.22.238:8081/course_api/"'
@@ -52,7 +51,7 @@ android {
             //环信和友盟生测试环境的key
         }
         productTest {//测试环境
-            applicationId "com.yewyw.weizhishoptest"
+            applicationId "com.tevins.weizhishoptest"
             versionName "V4.8.217112916.beta"
             buildConfigField "boolean", "LOG_CALLS", "true"
             buildConfigField "String", "BASEURL", '"http://112.124.22.238:8081/course_api/"'

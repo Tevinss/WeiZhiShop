@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/selector_list_item"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:padding="5dp"
+    >
+
+    <CheckBox
+        android:id="@+id/cb_shopping_cart_item_select"
+        style="@style/customCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        >
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/drawee_view_shopping_cart_item"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_shopping_cart_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:maxLines="3"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:text="我是商品的名字"
+                />
+
+            <TextView
+                android:id="@+id/tv_shopping_cart_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textColor="@color/crimson"
+                android:textSize="16sp"
+                tools:text="我是商品的价格"
+                />
+
+            <tevins.com.weizhishop.ui.widget.NumberAddSubView
+                android:id="@+id/num_shopping_cart_item_control"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:maxValue="10"
+                app:minValue="1"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

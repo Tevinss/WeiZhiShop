@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
- * Created by yewyw on 2017/11/29/0029.
+ * Created by tevins on 2017/11/29/0029.
  */
 
 public class HomeCatedoryItemDecoration extends RecyclerView.ItemDecoration {

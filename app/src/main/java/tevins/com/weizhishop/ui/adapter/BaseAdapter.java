@@ -17,7 +17,7 @@ import tevins.com.weizhishop.ui.viewholder.BaseViewHolder;
 public abstract class BaseAdapter<T, H extends BaseViewHolder> extends RecyclerView.Adapter<BaseViewHolder> {
     private static final int HOME_ITME_TYPE_NORMAL = 0;
     private static final int HOME_ITME_TYPE_OTHER = 1;
-    private Context mContext;
+    public Context mContext;
     private List<T> mDataList;
     private int mLayoutId;
     private OnItemClickListener mOnItemClickListener;

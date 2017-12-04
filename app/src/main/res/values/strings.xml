@@ -7,4 +7,6 @@
     <string name="error">请求失败，请稍后重试</string>
     <string name="failure">网络错误，请稍后重试</string>
     <string name="nothing_more">没有更多了</string>
+    <item name="no_bigger" type="id">不能增加了</item>
+    <item name="no_smaller" type="id">不能更小了</item>
 </resources>

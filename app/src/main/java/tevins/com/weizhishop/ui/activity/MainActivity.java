@@ -71,6 +71,21 @@ public class MainActivity extends BaseActivity {
         mRealtabcontent = (FrameLayout) findViewById(R.id.realtabcontent);
         mTabcontent = (FrameLayout) findViewById(android.R.id.tabcontent);
         mTabhost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+
+        mFragmentTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                if (tabId.equals(getString(R.string.cart))) {
+                    refreshData();
+                } else {
+
+                }
+            }
+        });
+    }
+
+    private void refreshData() {
+
     }
 
     /**

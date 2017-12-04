@@ -4,4 +4,13 @@
         <attr name="isShowSearchView" format="boolean"></attr>
         <attr name="rightButtonIcon" format="reference"></attr>
     </declare-styleable>
+    <!--自定义加减view的属性-->
+    <declare-styleable name="NumberAddSubView">
+        <attr name="value" format="integer|reference"></attr>
+        <attr name="minValue" format="integer|reference"></attr>
+        <attr name="maxValue" format="integer|reference"></attr>
+        <attr name="textBackground" format="reference"></attr>
+        <attr name="buttonAddBackground" format="reference"></attr>
+        <attr name="buttonSubBackground" format="reference"></attr>
+    </declare-styleable>
 </resources>

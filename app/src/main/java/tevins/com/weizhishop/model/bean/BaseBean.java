@@ -3,7 +3,7 @@ package tevins.com.weizhishop.model.bean;
 import java.io.Serializable;
 
 /**
- * Created by yewyw on 2017/11/29/0029.
+ * Created by tevins on 2017/11/29/0029.
  */
 
 public class BaseBean implements Serializable {

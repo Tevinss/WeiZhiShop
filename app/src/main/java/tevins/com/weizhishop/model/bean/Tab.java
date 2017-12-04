@@ -1,7 +1,7 @@
 package tevins.com.weizhishop.model.bean;
 
 /**
- * Created by yewyw on 2017/11/29/0029.
+ * Created by tevins on 2017/11/29/0029.
  */
 
 public class Tab {

@@ -4,7 +4,7 @@ package tevins.com.weizhishop.model.bean;
  * Created by tevins on 2017/12/3 003.
  */
 
-public class HotWaresInfo {
+public class WaresInfo {
     /**
      * id : 10
      * categoryId : 5

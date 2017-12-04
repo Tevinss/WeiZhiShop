@@ -20,7 +20,7 @@ import okhttp3.Call;
 import okhttp3.Response;
 import tevins.com.weizhishop.Constant;
 import tevins.com.weizhishop.R;
-import tevins.com.weizhishop.model.bean.HotWaresInfo;
+import tevins.com.weizhishop.model.bean.WaresInfo;
 import tevins.com.weizhishop.model.bean.PageInfo;
 import tevins.com.weizhishop.presenter.ApiCallback;
 import tevins.com.weizhishop.ui.adapter.HotWaresAdapter;
@@ -49,7 +49,7 @@ public class HotFragment extends Fragment implements Pager.OnPageListener {
     private static final int STATE_REFREH = 1;
     private static final int STATE_MORE = 2;
     private int state = STATE_NORMAL;
-    private List<HotWaresInfo> mDataList;
+    private List<WaresInfo> mDataList;
 
     @Nullable
     @Override
@@ -64,12 +64,32 @@ public class HotFragment extends Fragment implements Pager.OnPageListener {
                 .setPageSize(20)
                 .setRefreshLayout(mRefreshlayoutHotWares)
                 .build(this.getActivity().getApplicationContext(),
-                        new TypeToken<PageInfo<HotWaresInfo>>() {
+                        new TypeToken<PageInfo<WaresInfo>>() {
                         }.getType());
 
         pager.getData();
         return view;
     }
+
+    @Override
+    public void load(List dataList, int totalPage, int totalCount) {
+        mHotWaresAdapter = new HotWaresAdapter(this.getContext(), dataList, R.layout.item_hot_wares);
+        mRecyclerviewHotWares.setAdapter(mHotWaresAdapter);
+        mRecyclerviewHotWares.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        mRecyclerviewHotWares.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
+    }
+
+    @Override
+    public void refresh(List dataList, int totalPage, int totalCount) {
+        mHotWaresAdapter.clearData();
+        mHotWaresAdapter.addData(dataList);
+    }
+
+    @Override
+    public void loadMore(List dataList, int totalPage, int totalCount) {
+        mHotWaresAdapter.addData(mHotWaresAdapter.getDataList().size(), dataList);
+    }
+
 
     /**
      * 请求数据
@@ -78,12 +98,12 @@ public class HotFragment extends Fragment implements Pager.OnPageListener {
         HashMap<String, String> params = new HashMap<>();
         params.put("curPage", currPage + "");
         params.put("pageSize", pageSize + "");
-        mOkHttpHelper.post(Constant.API.WARES_HOT, params, new ApiCallback<PageInfo<HotWaresInfo>>() {
+        mOkHttpHelper.post(Constant.API.WARES_HOT, params, new ApiCallback<PageInfo<WaresInfo>>() {
 
             @Override
-            public void onSuccess(Response response, PageInfo<HotWaresInfo> hotWaresInfoPageInfo) {
+            public void onSuccess(Response response, PageInfo<WaresInfo> hotWaresInfoPageInfo) {
                 if (hotWaresInfoPageInfo != null) {
-                    mDataList = (List<HotWaresInfo>) hotWaresInfoPageInfo.getList();
+                    mDataList = (List<WaresInfo>) hotWaresInfoPageInfo.getList();
                     currPage = hotWaresInfoPageInfo.getCurrentPage();
                     totalPage = hotWaresInfoPageInfo.getTotalPage();
                     showData();
@@ -166,22 +186,5 @@ public class HotFragment extends Fragment implements Pager.OnPageListener {
         getData();
     }
 
-    @Override
-    public void load(List dataList, int totalPage, int totalCount) {
-        mHotWaresAdapter = new HotWaresAdapter(this.getContext(), dataList, R.layout.item_hot_wares);
-        mRecyclerviewHotWares.setAdapter(mHotWaresAdapter);
-        mRecyclerviewHotWares.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        mRecyclerviewHotWares.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
-    }
 
-    @Override
-    public void refresh(List dataList, int totalPage, int totalCount) {
-        mHotWaresAdapter.clearData();
-        mHotWaresAdapter.addData(dataList);
-    }
-
-    @Override
-    public void loadMore(List dataList, int totalPage, int totalCount) {
-        mHotWaresAdapter.addData(mHotWaresAdapter.getDataList().size(), dataList);
-    }
 }
