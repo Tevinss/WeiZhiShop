@@ -43,6 +43,7 @@ public class TestActivity extends BaseActivity {
                 // ...
             }
         }
+
     }
 
     private final MyHandler mHandler = new MyHandler(this);
@@ -61,6 +62,8 @@ public class TestActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_home_cardviewfir);
         initView();
+//        可以设置页面之间的切换动画
+//        overridePendingTransition();
 
         // Post a message and delay its execution for 10 minutes.
         mHandler.postDelayed(sRunnable, 1000 * 60 * 10);

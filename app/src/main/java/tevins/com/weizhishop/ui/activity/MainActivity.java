@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -21,6 +23,8 @@ import tevins.com.weizhishop.ui.fragment.HotFragment;
 import tevins.com.weizhishop.ui.fragment.MineFragment;
 import tevins.com.weizhishop.ui.widget.FragmentTabHost;
 import tevins.com.weizhishop.ui.widget.MyToolBar;
+import tevins.com.weizhishop.utils.WebViewHelper;
+import tevins.com.weizhishop.utils.http.OkHttpHelper;
 
 public class MainActivity extends BaseActivity {
 
@@ -28,18 +32,31 @@ public class MainActivity extends BaseActivity {
     private ArrayList<Tab> mTabs = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
     private MyToolBar mMyToolbar;
-    private FrameLayout mRealtabcontent;
     private FrameLayout mTabcontent;
-    private FragmentTabHost mTabhost;
     private CartFragment mCartFragment;
+    private WebView mWebView;
+    private OkHttpHelper mOkHttpHelper;
+    private WebSettings mSettings;
+    private FrameLayout mRealTabContent;
+    private WebViewHelper mWebViewHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mOkHttpHelper = new OkHttpHelper();
         initView();
-
     }
+
+
+    private void hideNative() {
+        mWebView.setVisibility(View.VISIBLE);
+        mMyToolbar.setVisibility(View.GONE);
+        mFragmentTabHost.setVisibility(View.GONE);
+        mTabcontent.setVisibility(View.GONE);
+        mRealTabContent.setVisibility(View.GONE);
+    }
+
 
     private void initView() {
         initTabHost();
@@ -50,11 +67,25 @@ public class MainActivity extends BaseActivity {
                 Toast.makeText(MainActivity.this, mMyToolbar.getSeachContent(), Toast.LENGTH_SHORT).show();
             }
         });
+//        initWebView();
+    }
+
+    private void initWebView() {
+        mWebView = (WebView) findViewById(R.id.web_view);
+        mWebViewHelper = new WebViewHelper(mWebView);
+        boolean shouldShowWebView = mWebViewHelper.shouldShowWebView();
+        if (shouldShowWebView) {
+            hideNative();
+        } else {
+            mWebView.setVisibility(View.GONE);
+        }
     }
 
     private void initTabHost() {
         mLayoutInflater = LayoutInflater.from(this);
         mFragmentTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+        mRealTabContent = (FrameLayout) findViewById(R.id.realtabcontent);
+
         mFragmentTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 
         Tab homeTab = new Tab(HomeFrament.class, R.string.home, R.drawable.selector_icon_home);
@@ -70,22 +101,21 @@ public class MainActivity extends BaseActivity {
         mTabs.add(mineTab);
 
         buildTabSpec(mTabs);
-        mRealtabcontent = (FrameLayout) findViewById(R.id.realtabcontent);
         mTabcontent = (FrameLayout) findViewById(android.R.id.tabcontent);
-        mTabhost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 
         mFragmentTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
                 if (tabId.equals(getString(R.string.cart))) {
                     refreshData();
-                } else {
-
                 }
             }
         });
     }
 
+    /**
+     * 刷新购物车数据
+     */
     private void refreshData() {
         if (mCartFragment == null) {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(getString(R.string.cart));

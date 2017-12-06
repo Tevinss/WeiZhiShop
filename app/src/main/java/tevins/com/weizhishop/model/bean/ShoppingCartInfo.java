@@ -5,7 +5,7 @@ package tevins.com.weizhishop.model.bean;
  */
 
 public class ShoppingCartInfo extends WaresInfo {
-    private int count;
+    private int count = 1;
     private boolean isChecked = true;
 
     public int getCount() {

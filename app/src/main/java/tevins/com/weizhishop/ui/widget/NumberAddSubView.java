@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import tevins.com.weizhishop.R;
-import tevins.com.weizhishop.utils.LogUtils;
 import tevins.com.weizhishop.utils.ToastUtils;
 
 /**
@@ -42,6 +41,7 @@ public class NumberAddSubView extends LinearLayout implements View.OnClickListen
      * 最大值
      */
     private int mMaxValue;
+    private OnButtonClickListener mOnButtonClickListener;
 
     public NumberAddSubView(Context context) {
         this(context, null);
@@ -153,10 +153,15 @@ public class NumberAddSubView extends LinearLayout implements View.OnClickListen
         switch (v.getId()) {
             case R.id.btn_sub://点击了减号
                 numSub();
+                if (mOnButtonClickListener != null) {
+                    mOnButtonClickListener.onButtonSubClick(v, this.mValue);
+                }
                 break;
             case R.id.btn_add://点击了加号
                 numAdd();
-                LogUtils.e("NumberAddSubView", "onClick: " + "点击了加号");
+                if (mOnButtonClickListener != null) {
+                    mOnButtonClickListener.onButtonAddClick(v, this.mValue);
+                }
                 break;
         }
     }
@@ -196,5 +201,28 @@ public class NumberAddSubView extends LinearLayout implements View.OnClickListen
             this.mValue = Integer.parseInt(value);
         }
         return this.mValue;
+    }
+
+    public interface OnButtonClickListener {
+        /**
+         * 点击了加号
+         *
+         * @param view
+         * @param value
+         */
+        void onButtonAddClick(View view, int value);
+
+        /**
+         * 点击了减号
+         *
+         * @param view
+         * @param value
+         */
+        void onButtonSubClick(View view, int value);
+    }
+
+    public void setOnButtonClickListener(OnButtonClickListener onButtonClickListener) {
+
+        mOnButtonClickListener = onButtonClickListener;
     }
 }

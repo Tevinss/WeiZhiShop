@@ -18,7 +18,7 @@ public abstract class BaseAdapter<T, H extends BaseViewHolder> extends RecyclerV
     private static final int HOME_ITME_TYPE_NORMAL = 0;
     private static final int HOME_ITME_TYPE_OTHER = 1;
     public Context mContext;
-    private List<T> mDataList;
+    public List<T> mDataList;
     private int mLayoutId;
     private OnItemClickListener mOnItemClickListener;
 

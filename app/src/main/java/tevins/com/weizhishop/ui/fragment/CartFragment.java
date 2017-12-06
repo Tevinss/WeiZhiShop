@@ -1,5 +1,6 @@
 package tevins.com.weizhishop.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -73,7 +74,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
      */
     private void showData(List<ShoppingCartInfo> shoppingCartInfoList) {
         Log.e("CartFragment", "showData: " + shoppingCartInfoList.size());
-        mShoppingCartAdapter = new ShoppingCartAdapter(this.getActivity().getApplicationContext(), shoppingCartInfoList, R.layout.item_shopping_cart);
+        mShoppingCartAdapter = new ShoppingCartAdapter(this.getActivity().getApplicationContext(), shoppingCartInfoList, R.layout.item_shopping_cart, mTvShoppingCartTotal, mCbShoppingCartAll);
         mRecyclerviewShoppingCart.setAdapter(mShoppingCartAdapter);
         mRecyclerviewShoppingCart.setLayoutManager(new LinearLayoutManager(this.getContext()));
         mRecyclerviewShoppingCart.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
@@ -88,6 +89,11 @@ public class CartFragment extends Fragment implements View.OnClickListener {
         mBtnShoppingCartOrder.setOnClickListener(this);
         mBtnShoppingCartDel = (Button) view.findViewById(R.id.btn_shopping_cart_del);
         mBtnShoppingCartDel.setOnClickListener(this);
+
+    }
+
+    private void startActivity(Intent intent, boolean isNeedLogin) {
+        super.startActivity(intent);
     }
 
     @Override

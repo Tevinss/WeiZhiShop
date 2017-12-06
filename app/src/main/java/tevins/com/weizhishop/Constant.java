@@ -11,6 +11,10 @@ public class Constant {
         /**
          * 首页分类接口
          */
+        public static final String CAN_SHOW_WEBVIEW = "http://www.27305.com/frontApi/getAboutUs";
+        /**
+         * 首页分类接口
+         */
         public static final String CAMPAIN_HOME = BASEURL + "campaign/recommend";
 
         /**
