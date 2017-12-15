@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="home_bar_icon">
+        <item>@drawable/img_0_small1</item>
+    </array>
+</resources>

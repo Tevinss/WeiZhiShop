@@ -1,7 +1,11 @@
 package tevins.com.weizhishop.ui.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -23,11 +27,13 @@ import tevins.com.weizhishop.ui.fragment.HotFragment;
 import tevins.com.weizhishop.ui.fragment.MineFragment;
 import tevins.com.weizhishop.ui.widget.FragmentTabHost;
 import tevins.com.weizhishop.ui.widget.MyToolBar;
+import tevins.com.weizhishop.utils.LogUtils;
 import tevins.com.weizhishop.utils.WebViewHelper;
 import tevins.com.weizhishop.utils.http.OkHttpHelper;
 
 public class MainActivity extends BaseActivity {
 
+    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 101;
     private tevins.com.weizhishop.ui.widget.FragmentTabHost mFragmentTabHost;
     private ArrayList<Tab> mTabs = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
@@ -46,6 +52,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         mOkHttpHelper = new OkHttpHelper();
         initView();
+        requestPermissions();
     }
 
 
@@ -144,6 +151,7 @@ public class MainActivity extends BaseActivity {
             TextView txtIndicator = (TextView) tabView.findViewById(R.id.txt_indicator);
             iconTab.setImageResource(tab.getIcon());
             txtIndicator.setText(tab.getTitle());
+
             tabSpec.setIndicator(tabView);
             //添加到TabHost
             mFragmentTabHost.addTab(tabSpec, tab.getFragment(), null);
@@ -152,4 +160,32 @@ public class MainActivity extends BaseActivity {
         mFragmentTabHost.setCurrentTab(0);
     }
 
+
+     private void requestPermissions() {
+             // Here, thisActivity is the current activity
+             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+                 // Should we show an explanation?
+                 if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                         Manifest.permission.CALL_PHONE)) {
+
+                     // Show an expanation to the user *asynchronously* -- don't block
+                     // this thread waiting for the user's response! After the user
+                     // sees the explanation, try again to request the permission.
+                     LogUtils.e("MainActivity", "requestPermissions: " + "展示一个请求权限的解释");
+
+                 } else {
+
+                     // No explanation needed, we can request the permission.
+
+                     ActivityCompat.requestPermissions(this,
+                             new String[]{Manifest.permission.CALL_PHONE},
+                             MY_PERMISSIONS_REQUEST_CALL_PHONE);
+
+                     // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                     // app-defined int constant. The callback method gets the
+                     // result of the request.
+                 }
+             }
+         }
 }

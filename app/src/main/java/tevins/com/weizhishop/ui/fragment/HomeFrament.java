@@ -61,6 +61,7 @@ public class HomeFrament extends Fragment implements BaseView {
         mRecyclerviewHome.setAdapter(mHomeCategoryAdapter);//设置adapter
         mRecyclerviewHome.setLayoutManager(new LinearLayoutManager(this.getContext()));//设置布局管理器
         mRecyclerviewHome.addItemDecoration(new HomeCatedoryItemDecoration());//添加分割线
+
     }
 
     private void initData() {

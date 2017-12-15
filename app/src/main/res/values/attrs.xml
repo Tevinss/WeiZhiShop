@@ -13,4 +13,5 @@
         <attr name="buttonAddBackground" format="reference"></attr>
         <attr name="buttonSubBackground" format="reference"></attr>
     </declare-styleable>
+
 </resources>

@@ -3,6 +3,7 @@ package tevins.com.weizhishop.ui.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -70,6 +71,7 @@ public class TestActivity extends BaseActivity {
 
         // Go back to the previous Activity.
         finish();
+//        Executors
     }
 
 
@@ -78,5 +80,17 @@ public class TestActivity extends BaseActivity {
         mIvHomeItemBig = (ImageView) findViewById(R.id.iv_home_item_big);
         mIvHomeItemSmallTop = (ImageView) findViewById(R.id.iv_home_item_small_top);
         mIvHomeItemSmallBottom = (ImageView) findViewById(R.id.iv_home_item_small_bottom);
+        final ViewTreeObserver viewTreeObserver = mTvHomeItemTitle.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                viewTreeObserver.removeOnGlobalLayoutListener(this);
+            }
+        });
+
     }
+
+
+
+
 }
